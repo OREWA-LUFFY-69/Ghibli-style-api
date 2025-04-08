@@ -21,8 +21,8 @@ app.post("/ghibli-style", async (req, res) => {
     });
 
     const predictionUrl = startRes.data.urls.get;
-
     let output = null;
+
     for (let i = 0; i < 20; i++) {
       const poll = await axios.get(predictionUrl, {
         headers: { Authorization: `Token ${REPLICATE_API_TOKEN}` }
@@ -39,7 +39,6 @@ app.post("/ghibli-style", async (req, res) => {
     }
 
     if (!output) return res.status(500).json({ error: "Timeout waiting for image" });
-
     res.json({ ghibli_image: output });
   } catch (err) {
     res.status(500).json({ error: "API error", details: err.message });
@@ -47,5 +46,11 @@ app.post("/ghibli-style", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(`Rakib's Ghibli Style API is running on port 3000 \n Author: Rakib Adil \n wa.me/+8801811276038 \n Facebook: https://www.facebook.com/RAKIB.404X \n Thank you for using my API!`);
+  console.log(
+    `Rakib's Ghibli Style API is running on port 3000 \n` +
+    `Author: Rakib Adil \n` +
+    `wa.me/+8801811276038 \n` +
+    `Facebook: https://www.facebook.com/RAKIB.404X \n` +
+    `Thank you for using my API!`
+  );
 });
