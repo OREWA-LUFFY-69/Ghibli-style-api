@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 app.use(express.json());
 
-const REPLICATE_API_TOKEN = "r8_d6IP9i3AcFltzwwJCLz5BKs6Evdo7TS466CQV";
+const REPLICATE_API_TOKEN = "r8_d6IP9i3AcFltzwwJCLz5BKs6Evdo7TS466CQV"; // Your Replicate API token
 
 app.get("/", (req, res) => {
   res.send("Rakib's Ghibli Style API is running on port 3000 \n Author: Rakib Adil \n wa.me/+8801811276038 \n Facebook: https://www.facebook.com/RAKIB.404X \n Thank you for using my API!");
@@ -15,7 +15,7 @@ app.post("/ghibli-style", async (req, res) => {
 
   try {
     const startRes = await axios.post("https://api.replicate.com/v1/predictions", {
-      version: "c508d555b8cf39c4d7c27df6bdf4e39679cc706142c09fbf6aee9f168ecfdd48",
+      version: "c508d555b8cf39c4d7c27df6bdf4e39679cc706142c09fbf6aee9f168ecfdd48", // Ensure this is the correct model version for Ghibli-style
       input: { image: imageUrl }
     }, {
       headers: {
