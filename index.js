@@ -5,6 +5,10 @@ app.use(express.json());
 
 const REPLICATE_API_TOKEN = "r8_d6IP9i3AcFltzwwJCLz5BKs6Evdo7TS466CQV";
 
+app.get("/", (req, res) => {
+  res.send("Rakib's Ghibli Style API is running on port 3000 \n Author: Rakib Adil \n wa.me/+8801811276038 \n Facebook: https://www.facebook.com/RAKIB.404X \n Thank you for using my API!");
+});
+
 app.post("/ghibli-style", async (req, res) => {
   const imageUrl = req.body.image;
   if (!imageUrl) return res.status(400).json({ error: "No image URL provided" });
@@ -39,6 +43,7 @@ app.post("/ghibli-style", async (req, res) => {
     }
 
     if (!output) return res.status(500).json({ error: "Timeout waiting for image" });
+
     res.json({ ghibli_image: output });
   } catch (err) {
     res.status(500).json({ error: "API error", details: err.message });
@@ -46,11 +51,5 @@ app.post("/ghibli-style", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(
-    `Rakib's Ghibli Style API is running on port 3000 \n` +
-    `Author: Rakib Adil \n` +
-    `wa.me/+8801811276038 \n` +
-    `Facebook: https://www.facebook.com/RAKIB.404X \n` +
-    `Thank you for using my API!`
-  );
+  console.log("Rakib's Ghibli Style API is running on port 3000 \n Author: Rakib Adil \n wa.me/+8801811276038 \n Facebook: https://www.facebook.com/RAKIB.404X \n Thank you for using my API!");
 });
