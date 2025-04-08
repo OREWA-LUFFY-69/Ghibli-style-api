@@ -10,7 +10,6 @@ app.post("/ghibli-style", async (req, res) => {
   if (!imageUrl) return res.status(400).json({ error: "No image URL provided" });
 
   try {
-    // Step 1: Start prediction
     const startRes = await axios.post("https://api.replicate.com/v1/predictions", {
       version: "c508d555b8cf39c4d7c27df6bdf4e39679cc706142c09fbf6aee9f168ecfdd48",
       input: { image: imageUrl }
@@ -23,7 +22,6 @@ app.post("/ghibli-style", async (req, res) => {
 
     const predictionUrl = startRes.data.urls.get;
 
-    // Step 2: Poll result
     let output = null;
     for (let i = 0; i < 20; i++) {
       const poll = await axios.get(predictionUrl, {
@@ -37,7 +35,7 @@ app.post("/ghibli-style", async (req, res) => {
         return res.status(500).json({ error: "Image generation failed" });
       }
 
-      await new Promise(resolve => setTimeout(resolve, 3000)); // wait 3s
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
     if (!output) return res.status(500).json({ error: "Timeout waiting for image" });
@@ -49,5 +47,5 @@ app.post("/ghibli-style", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(`Rakib's Ghibli Style API running on port 3000 \n Author : Rakib Adil \n wa.me/+8801811276038 \n Facebook : https://www.facebook.com/RAKIB.404X \n Thank You for using My API`);
+  console.log(`Rakib's Ghibli Style API is running on port 3000 \n Author: Rakib Adil \n wa.me/+8801811276038 \n Facebook: https://www.facebook.com/RAKIB.404X \n Thank you for using my API!`);
 });
