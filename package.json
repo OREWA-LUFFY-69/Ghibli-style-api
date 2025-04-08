@@ -1,11 +1,14 @@
 {
   "name": "ghibli-style-api",
-	"author": "Rakib Adil",
   "version": "1.0.0",
+  "description": "An API to turn normal photos into Studio Ghibli-style art using Replicate AI.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
+  "keywords": ["ghibli", "replicate", "ai", "rakib"],
+  "author": "Rakib Adil",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.6.7",
     "express": "^4.18.2"
